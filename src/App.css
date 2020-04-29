@@ -1,0 +1,11 @@
+.big-button {
+  font-size: 41pt;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  padding: 16px;
+  border: solid 1px #DDD;
+  box-sizing: border-box;
+  text-align: center;
+  user-select: none;
+}

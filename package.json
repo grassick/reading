@@ -1,0 +1,23 @@
+{
+  "name": "reading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "parcel --port 8080 src/index.html",
+    "build": "NODE_ENV=development parcel build src/index.html --no-minify",
+    "test": "npx mocha -r ts-node/register --recursive \"test/**/*Tests.ts\""
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "parcel": "^1.12.4",
+    "typescript": "^3.7.5"
+  }
+}
