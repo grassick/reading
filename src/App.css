@@ -9,3 +9,13 @@
   text-align: center;
   user-select: none;
 }
+
+body { 
+  user-select: none;
+}
+
+.star {
+  color: #fc0303;
+  font-size: 60px;
+  display: inline-block;
+}
