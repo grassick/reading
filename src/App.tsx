@@ -16,36 +16,75 @@ import './animate.css'
 // Je m'appelle Félicien. J'aime le soccer et les dinosaures, le caramel et les momies d'Égypte.
 // Aujourd'hui, c'est mon anniversaire. J'ai six ans.
 
+// J'aime les chiens.
+// Il y a un chien à Winnipeg.
+// Son nom est Felix.
+// Je veux aller le voir.
+// Je veux jouer avec lui.
+// Je vais me cacher et il va me trouver.
+// Je vais aussi jouer avec Benji, mais Felix est plus beau.
+// Cet été, je vais aller à Winnipeg encore.
+// On va faire du camping et avoir des aventures.
+// Je veux faire des explosions avec mon père et mon grandpère.
+// On va lancer une balle très haut dans le ciel!
+// Je veux utiliser le télescope de grandpa encore pour voir des planètes.
+// Ma planète favorite est Mars.
+// Je veux faire des explosions avec mon père et mon grandpère.
+// On va lancer une balle très haut dans le ciel!
+// Je veux utiliser le télescope de grandpapa encore pour voir des planètes.
+// Ma planète favorite est Mars.
+// J'aime aussi Jupiter. Il est très grand!
+// Sur Jupiter, il y a une tache rouge.
+// La tache rouge est une tempète.
+// La tempète est trois fois plus grande que la terre.
+// Moi, j'aime les tempètes et les éclaires.
+// J'espère voir une tornade un jour.
+
 // `.split("\n").map(ph => ph.trim()).filter(ph => ph)
 
 const starSound = new Audio("https://freesound.org/data/previews/332/332629_5794274-lq.mp3")
 
 const phrases = `
 
+Quand je suis à Winnipeg, je sors marcher avec mon grandpère.
+On marche dans les bois proches de la maison.
+Un jour quand on marchait, j'ai entendu un bruit dans le forêt.
+C'était un petit bruit bizarre, mais mon grandpère ne l'a pas entendu.
+Je lui ai demandé a entrer dans le forêt, mais on était en retard.
+Le lendemain, on est retourné au même forêt.
+Cette fois, mon grandpère a entendu le bruit aussi!
+Nous sommes entrés dans le forêt pour explorer.
+On n'entendait pu lr bruit, mais j'ai vu quelque chose par terre.
+C'était des petites gouttes vertes par terre!
+Les gouttes étaient lumineuses! Vertes et lumineuses!
+Tout à coup, on avait peur par ce que les gouttes étaient si bizarre.
+Nous avons suivi la piste des gouttes.
+Nous avons trouvé une personne blessée par terre.
+Mais la personne n'avait pas l'air humain.
+Sa peau était verte et il était tout petit.
+Son bras saignait, mais le sang n'était pas rouge.
+C'était un extraterrestre, mais nous n'avions pas peur car il était petit et blessé.
+Mon grand-père a décidé de l'aider.
+Il a utilisé son couteau suisse pour couper un pansement.
+Il l'a doucement enroulé autour du bras de l'extraterrestre.
+L'extraterrestre a indiqué la piste de sang.
+Mon grand-père a soigneusement ramassé l'extraterrestre et nous avons suivi la piste dans l'autre sens.
+En marchant dans les bois, nous avons senti une odeur de brûlé.
+Nous sommes arrivés à un endroit où les arbres ont été partiellement brûlés.
+Il y avait un objet métallique sur le sol.
+Il était rond et de la taille d'une grande baignoire.
+C'était le vaisseau spatial de l'extraterrestre !
+Grand-père a posé l'extraterrestre à côté du vaisseau.
+Grand-père a sorti son téléphone pour prendre une photo.
+L'extraterrestre a lentement grimpé dans son vaisseau.
+Il nous a fait signe et a ensuite pointé dans la forêt, loin du navire.
+Nous avons compris que le vaisseau allait décoller.
+Il était dangereux de s'en approcher au décollage.
+Nous avons fait un signe d'adieu et sommes allés dans la forêt.
+Soudain, il y a eu un coup de vent.
+Le vaisseau spatial s'est élevé dans les airs.
+Il s'est mis à clignoter une fois, puis a disparu.
 
-J'aime les chiens.
-Il y a un chien à Winnipeg.
-Son nom est Felix.
-Je veux aller le voir.
-Je veux jouer avec lui.
-Je vais me cacher et il va me trouver.
-Je vais aussi jouer avec Benji, mais Felix est plus beau.
-Cet été, je vais aller à Winnipeg encore.
-On va faire du camping et avoir des aventures.
-Je veux faire des explosions avec mon père et mon grandpère.
-On va lancer une balle très haut dans le ciel!
-Je veux utiliser le télescope de grandpa encore pour voir des planètes.
-Ma planète favorite est Mars.
-Je veux faire des explosions avec mon père et mon grandpère.
-On va lancer une balle très haut dans le ciel!
-Je veux utiliser le télescope de grandpapa encore pour voir des planètes.
-Ma planète favorite est Mars.
-J'aime aussi Jupiter. Il est très grand!
-Sur Jupiter, il y a une tache rouge.
-La tache rouge est une tempète.
-La tempète est trois fois plus grande que la terre.
-Moi, j'aime les tempètes et les éclaires.
-J'espère voir une tornade un jour.
 
 `.split("\n").map(ph => ph.trim()).filter(ph => ph)
 
@@ -119,9 +158,22 @@ export const App = () => {
     }
   }
 
+  const prevWord = () => {
+    if (wordIndex > 0) {
+      setWordIndex(wordIndex - 1)
+    }
+    else {
+      setPhraseIndex(Math.max(0, phraseIndex - 1))
+      setWordIndex(phrases[Math.max(0, phraseIndex - 1)].split(" ").length - 1)      
+    }
+  }
+
   const handleKeyDown = (ev: KeyboardEvent) => {
     if (ev.keyCode == 39) {
       nextWord()
+    }
+    if (ev.keyCode == 37) {
+      prevWord()
     }
   }
 
@@ -165,7 +217,7 @@ export const App = () => {
         setPhraseIndex(Math.max(0, phraseIndex - 1))
         setWordIndex(0)
       }}>&lt;&lt;</div>
-      <div className="big-button" onClick={() => { setWordIndex(Math.max(0, wordIndex - 1))}}>&lt;</div>
+      <div className="big-button" onClick={prevWord}>&lt;</div>
       <div className="big-button" onClick={nextWord}>&gt;</div>
       <div className="big-button" onClick={() => { 
         setPhraseIndex(Math.max(0, phraseIndex + 1))
